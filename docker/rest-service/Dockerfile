@@ -8,8 +8,9 @@ WORKDIR $HOME
 COPY package.json .
 COPY tsconfig.json .
 
-RUN npm install nodemon -g \
-  && npm install
+RUN npm install nodemon -g
+
+RUN npm install
 
 COPY ./src/ ./src/
 
