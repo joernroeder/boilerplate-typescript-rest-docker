@@ -5,32 +5,30 @@ let routes: express.Router = express.Router();
 
 const user: User = new User();
 
-routes.get('/up', (req, res) => {
+const sendPositionAsJson = (req: express.Request, res: express.Response) => {
+    res.json(user.getPosition());
+};
+
+routes.get('/up', (req, res, next) => {
     user.up();
+    next();
+}, sendPositionAsJson);
 
-    res.json(user.getPosition());
-});
-
-routes.get('/down', (req, res) => {
+routes.get('/down', (req, res, next) => {
     user.down();
+    next();
+}, sendPositionAsJson);
 
-    res.json(user.getPosition());
-});
-
-routes.get('/left', (req, res) => {
+routes.get('/left', (req, res, next) => {
     user.left();
+    next();
+}, sendPositionAsJson);
 
-    res.json(user.getPosition());
-});
-
-routes.get('/right', (req, res) => {
+routes.get('/right', (req, res, next) => {
     user.right();
+    next();
+}, sendPositionAsJson);
 
-    res.json(user.getPosition());
-});
-
-routes.get('/get-position', (req, res) => {
-    res.json(user.getPosition());
-});
+routes.get('/get-position', sendPositionAsJson);
 
 export = routes;
