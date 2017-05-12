@@ -1,6 +1,7 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as routes from './routes/index';
+import * as userRoutes from './routes/user';
 
 export class Server {
 
@@ -27,7 +28,8 @@ export class Server {
    * Initialize routes and set default behaviors
    */
   private initRoutes(): void {
-    this.app.use( "/", routes );
+    this.app.use('/', routes );
+    this.app.use('/', userRoutes);
   }
 
   /**
