@@ -2,17 +2,18 @@ import * as lib from "./../lib/lib";
 import { TestConfig } from "./../test-config";
 
 describe( "GET /health", () => {
-  let server: any;
-  before( () => {
-    lib.connect( { url: TestConfig.URL } )
-      .then( ( serverInst ) => {
-        server = serverInst;
-      } );
-  } );
+    let server: any;
 
-  beforeEach( () => {
-    return lib.healthCheck( server );
-  } );
+    before(() => {
+        lib.connect({ url: TestConfig.URL })
+            .then(( serverInst) => {
+            server = serverInst;
+        });
+    });
+
+    beforeEach(() => {
+        return lib.healthCheck( server );
+    });
 
   it( "is available", done => {
     server
@@ -24,6 +25,6 @@ describe( "GET /health", () => {
       } );
   } );
 
-} );
+});
 
 
